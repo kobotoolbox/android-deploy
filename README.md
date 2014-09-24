@@ -21,7 +21,8 @@ Time requirements
 Prerequisites
 -------------
 * Android adb and fastboot installed and added to environment path (download and path instructions [here](http://lifehacker.com/the-easiest-way-to-install-androids-adb-and-fastboot-to-1586992378)
-* existing TWRP backup from the same device (or same model) in a local folder 'backup' 
+* existing TWRP backup from the same device (or same model) in a sub folder 'backup' 
+* [TWRP 2.8.0.1](http://teamw.in/project/twrp2) in the same directory as the batch file
 
 How to run it
 -------------
