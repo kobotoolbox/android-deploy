@@ -72,16 +72,16 @@ echo.
 echo.
 echo.
 echo.
-::Copy and restore TWRP backup
-adb push "%backup_path%." /sdcard/twrp_backup >> log.txt
+::Copy, restore, and delete TWRP backup
+adb push "%backup_path%." /sdcard/twrp_backup
 echo. 
 echo Files copied - starting restore.
 echo. 
-adb shell twrp restore /sdcard/twrp_backup >> log.txt
-:: adb shell rm -R /sdcard/twrp_backup
+adb shell twrp restore /sdcard/twrp_backup
+adb shell rm -R /sdcard/twrp_backup
 
 ::Reboot
-adb reboot >> log.txt
+adb reboot
 echo.
 echo.
 echo.
