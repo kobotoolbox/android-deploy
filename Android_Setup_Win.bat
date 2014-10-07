@@ -7,6 +7,12 @@
 set backup_path=backup\
 
 
+
+:: create a unique timestamp
+For /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%a-%%b)
+For /f "tokens=1-2 delims=/:" %%a in ('time /t') do (set mytime=%%a%%b)
+set timestamp=mydate_mytime 
+
 if not exist "%backup_path%system.ext4.win" (
 	echo The backup folder doesn't exist...
 	pause
@@ -73,7 +79,7 @@ echo.
 echo.
 echo.
 ::Copy, restore, and delete TWRP backup
-adb push "%backup_path%." /sdcard/twrp_backup
+adb push "%backup_path%." /sdcard/twrp_backup >> "log_%timestamp%.txt" 2>&1
 echo. 
 echo Files copied - starting restore.
 echo. 
