@@ -22,6 +22,8 @@ if not exist "%backup_path%system.ext4.win" (
 	exit
 )
 
+set /p id="Enter device number: " %=%
+(echo ##### Device number: %id% & echo. ) >> "log_%timestamp%.txt" 2>&1
 echo.
 echo.
 echo.
