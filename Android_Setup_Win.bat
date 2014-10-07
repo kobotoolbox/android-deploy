@@ -11,10 +11,13 @@ set backup_path=backup\
 :: create a unique timestamp
 For /f "tokens=2-4 delims=/ " %%a in ('date /t') do (set mydate=%%c-%%a-%%b)
 For /f "tokens=1-2 delims=/:" %%a in ('time /t') do (set mytime=%%a%%b)
-set timestamp=mydate_mytime 
+set timestamp=%mydate%_%mytime% 
 
 if not exist "%backup_path%system.ext4.win" (
-	echo The backup folder doesn't exist...
+	echo There is no backup inside the %backup_path% folder. 
+	echo.
+	echo ##### no backup in folder >> "log_%timestamp%.txt" 2>&1
+	echo.
 	pause
 	exit
 )
@@ -32,13 +35,32 @@ echo Press any key once that's done.
 echo.
 echo.
 echo.
-echo On the next screen confirm Yes (with the power key)
+echo.
+echo.
+echo.
 pause > nul
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo.
+echo On your tablet/phone screen confirm Yes with the power key
 
 ::Unlock device
-fastboot oem unlock
-fastboot flash recovery openrecovery-twrp-2.8.0.1-grouper.img
-fastboot reboot-bootloader
+(
+	echo.
+	echo ##### unlocking and adding recovery 
+	echo.
+	fastboot oem unlock
+	fastboot flash recovery recovery/openrecovery-twrp-2.8.0.1-grouper.img
+	fastboot reboot-bootloader
+) >> "log_%timestamp%.txt" 2>&1
 
 echo.
 echo.
@@ -78,16 +100,52 @@ echo.
 echo.
 echo.
 echo.
+
 ::Copy, restore, and delete TWRP backup
-adb push "%backup_path%." /sdcard/twrp_backup >> "log_%timestamp%.txt" 2>&1
+echo Copying the files to your device. This will take several minutes...
+echo.
+echo.
+echo.
+echo.
+(
+	echo.
+	echo ##### copy old backup
+	echo.
+	adb push "%backup_path%." /sdcard/twrp_backup 
+) >> "log_%timestamp%.txt" 2>&1
+
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
+echo. 
 echo. 
 echo Files copied - starting restore.
 echo. 
-adb shell twrp restore /sdcard/twrp_backup
-adb shell rm -R /sdcard/twrp_backup
+echo. 
+echo. 
+echo. 
+
+(
+	echo.
+	echo ##### restoring
+	echo.
+	adb shell twrp restore /sdcard/twrp_backup
+	adb shell rm -R /sdcard/twrp_backup
+) >> "log_%timestamp%.txt" 2>&1
 
 ::Reboot
-adb reboot
+(
+	echo.
+	echo ##### rebooting
+	echo.
+	adb reboot
+) >> "log_%timestamp%.txt" 2>&1	
 echo.
 echo.
 echo.
