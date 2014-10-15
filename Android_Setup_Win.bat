@@ -16,14 +16,13 @@ set timestamp=%mydate%_%mytime%
 if not exist "%backup_path%system.ext4.win" (
 	echo There is no backup inside the %backup_path% folder. 
 	echo.
-	echo ##### no backup in folder >> "log_%timestamp%.txt" 2>&1
 	echo.
 	pause
 	exit
-)
+) >> "logs\log_%timestamp%.txt" 2>&1
 
 set /p id="Enter device number: " %=%
-(echo ##### Device number: %id% & echo. ) >> "log_%timestamp%.txt" 2>&1
+(echo ##### Device number: %id% & echo. ) >> "logs\log_%timestamp%.txt" 2>&1
 echo.
 echo.
 echo.
@@ -54,15 +53,8 @@ echo.
 echo.
 echo On your tablet/phone screen confirm Yes with the power key
 
-::Unlock device
-(
-	echo.
-	echo ##### unlocking and adding recovery 
-	echo.
-	fastboot oem unlock
-	fastboot flash recovery recovery/openrecovery-twrp-2.8.0.1-grouper.img
-	fastboot reboot-bootloader
-) >> "log_%timestamp%.txt" 2>&1
+::Wipe, Unlock, and install recovery
+call 01_prepare.bat >> "logs\log_%timestamp%.txt" 2>&1
 
 echo.
 echo.
@@ -92,7 +84,7 @@ echo.
 echo.
 echo.	
 echo.	
-pause > nul
+pause 
 echo.
 echo.
 echo.
@@ -109,13 +101,7 @@ echo.
 echo.
 echo.
 echo.
-(
-	echo.
-	echo ##### copy old backup
-	echo.
-	adb push "%backup_path%." /sdcard/twrp_backup 
-) >> "log_%timestamp%.txt" 2>&1
-
+call 02_copybackup.bat >> "logs\log_%timestamp%.txt" 2>&1
 echo. 
 echo. 
 echo. 
@@ -133,13 +119,8 @@ echo.
 echo. 
 echo. 
 
-(
-	echo.
-	echo ##### restoring
-	echo.
-	adb shell twrp restore /sdcard/twrp_backup
-	adb shell rm -R /sdcard/twrp_backup
-) >> "log_%timestamp%.txt" 2>&1
+pause
+call 03_restore.bat >> "logs\log_%timestamp%.txt" 2>&1
 
 ::Reboot
 (
@@ -147,29 +128,31 @@ echo.
 	echo ##### rebooting
 	echo.
 	adb reboot
-) >> "log_%timestamp%.txt" 2>&1	
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo All done!
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
-echo.
+) >> "logs\log_%timestamp%.txt" 2>&1	
+(
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo All done!
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+	echo.
+) >> "logs\log_%timestamp%.txt" 2>&1	
 pause
