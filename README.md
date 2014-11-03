@@ -26,7 +26,7 @@ The preparation work for creating the backup and setting up the computer to be u
 * Android adb and fastboot installed and added to environment path (download and path instructions [here](http://lifehacker.com/the-easiest-way-to-install-androids-adb-and-fastboot-to-1586992378)
 * existing [TWRP backup](https://www.google.com/search?q=create+backup+in+TWRP) from the same device (or same model) located in a sub folder 'backup' 
 * [TWRP 2.8.0.1](http://teamw.in/project/twrp2) in the same directory as the batch file
-* Android [USB drivers](http://developer.android.com/sdk/win-usb.html) for fastboot and recovery ([might require manual manual update of driver file](http://blog.dantup.com/2012/10/fixing-adb-device-not-found-with-nexus-7-in-recovery-mode/))
+* On Windows: Android [USB drivers](http://developer.android.com/sdk/win-usb.html) for fastboot and recovery. IMPORTANT: This [might require manual manual updating of driver file](http://blog.dantup.com/2012/10/fixing-adb-device-not-found-with-nexus-7-in-recovery-mode/) if your device is not recognized in Recovery mode.
 
 How to run it
 -------------
