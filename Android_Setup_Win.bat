@@ -24,6 +24,9 @@ if not exist "%backup_path%system.ext4.win" (
 cls
 echo ====STEP 1: BOOTLOADER==========================================================
 echo.
+echo (If this is the first time the device is connected to your computer, first 
+echo boot it up normally with the USB cable attached, then turn it off again.)
+echo. 
 echo Connect device by USB, then enter into bootloader mode 
 echo (press volume down+power at the same time)
 echo.
@@ -36,7 +39,7 @@ echo.
 echo If you see a question on your tablet screen, confirm Yes using the power key.
 
 	::Wipe, Unlock, and install recovery
-	call 01_prepare.bat >> "%logfile%" 2>&1
+	call scripts\01_prepare.bat >> "%logfile%" 2>&1
 
 cls
 echo ====STEP 2: RECOVERY============================================================
@@ -46,17 +49,17 @@ timeout /t 15 /nobreak
 echo Copying the files to your device. This will take about 6 minutes.
 
 	::Copying
-	call 02_copybackup.bat >> "%logfile%" 2>&1
+	call scripts\02_copybackup.bat >> "%logfile%" 2>&1
 
 cls
 echo Files have been copied to your device and are now being restored.
 echo This process takes about 2 minutes.
 
 	::Restore backup
-	call 03_restore.bat >> "%logfile%" 2>&1
+	call scripts\03_restore.bat >> "%logfile%" 2>&1
 
 	::Reboot
-	call 04_reboot.bat >> "%logfile%" 2>&1
+	call scripts\04_reboot.bat >> "%logfile%" 2>&1
 
 cls
 echo ====Rebooting. Backup script completed.==========================================
