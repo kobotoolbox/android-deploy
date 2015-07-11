@@ -1,0 +1,30 @@
+Unlocking
+=========
+* Turn on tablet into bootloader mode (power + volume down)
+* Connect one tablet at a time to the computer by USB
+* Run 01_unlock_reboot.bat
+	- This will unlock the device. Confirm with the power key on the device. 
+	- Next the device will restart into the Android factory version.
+* [repeat this step for all tablets]
+
+Copying the backup files
+========================
+* Connect as many tablets to the computer by USB as possible (between 2 and 4 depending on the PC)
+* In Windows Explorer copy the 'backup' folder
+* In the 'My Computer' window right-click on each of the 'Nexus 7' symbol and choose paste
+	- Wait for each of the file transfers to finish
+* Unplug each tablet and turn them off
+* [repeat this step in batches for all tablets]
+
+Restore the backup
+==================
+* Turn on tablet into bootloader mode (power + volume down)
+* Connect one tablet at a time to the computer by USB
+* Run 02_recovery_rename_restore_new.bat
+	- This will install the TWRP recovery software
+	- After booting into the Recovery console, wait for the Windows USB drivers to finish installing before pressing a key to continue
+	- The script will start to restore the backup folder
+	- Restoring will take about 2 minutes 20 seconds
+	- You can unplug the device as soon the recovery process starts ("[RESTORE STARTED]")
+* [optional: On the tablet click the button at the bottom center to confirm if Restoring has finished. Click the button again to return to the main menu]
+* Click Reboot > System
