@@ -5,7 +5,8 @@ Unlocking
 * Run 01_unlock_reboot.bat
 	- This will unlock the device. Confirm with the power key on the device. 
 	- Next the device will restart into the Android factory version.
-* [repeat this step for all tablets]
+* [repeat this step for all tablets] **There is no need to re-start the script as it will run continuously.**
+* After the last tablet has been unlocked, close the script window to terminate it. 
 
 Copying the backup files
 ========================
@@ -14,17 +15,26 @@ Copying the backup files
 * In the 'My Computer' window right-click on each of the 'Nexus 7' symbol and choose paste
 	- Wait for each of the file transfers to finish
 * Unplug each tablet and turn them off
-* [repeat this step in batches for all tablets]
+* [repeat this section in batches for all tablets]
 
 Restore the backup
 ==================
 * Turn on tablet into bootloader mode (power + volume down)
 * Connect one tablet at a time to the computer by USB
 * Run 02_recovery_rename_restore_new.bat
-	- This will install the TWRP recovery software
-	- After booting into the Recovery console, wait for the Windows USB drivers to finish installing before pressing a key to continue
-	- The script will start to restore the backup folder
-	- Restoring will take about 2 minutes 20 seconds
-	- You can unplug the device as soon the recovery process starts ("[RESTORE STARTED]")
-* [optional: On the tablet click the button at the bottom center to confirm if Restoring has finished. Click the button again to return to the main menu]
+	- This will install the TWRP recovery software, move the 'backup' folder in the right location, and start the restore process
+	- You can unplug the device as soon the recovery process starts ("[RESTORE STARTED]") 
+* Plug in the next tablet (which should already be in bootloader mode at this point, see step 1), and repeat these steps until all tablets are done. **There is no need to re-start the script as it will run continuously.**
+* Restoring on each tablet takes about 2 minutes 20 seconds. [optional: On the tablet click the button at the bottom center to confirm if Restoring has finished. Click the button again to return to the main menu]
 * Click Reboot > System
+* After the last tablet has been restored, close the script window to terminate it. 
+
+Set the time
+============
+* Connect one tablet at a time to the computer by USB. (Tablets should be booted up normally but no need to open one of the two accounts.)
+* Make sure the computer's clock is set accurately.
+* Run 03_set_datetime_turnoff.bat
+	- This will set the tablet to the current computer time.
+	- Once the time is set the tablet will be turned off. 
+* Plug in the next tablet and continue until all have been updated. 
+* After the last tablet has been updated, close the script window to terminate it. 

@@ -27,6 +27,7 @@ set datetimef=%year%%month%%day%.%hour%%min%%secs%
 adb shell su 0 date -s %datetimef%
 
 ::Turn off device
+
 adb shell reboot -p
 
 goto repeat
