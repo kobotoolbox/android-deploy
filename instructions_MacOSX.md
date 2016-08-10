@@ -9,13 +9,13 @@ Instructions regarding buttons to be pressed are specific to Nexus 7 devices, bu
 
 Instructions (Specific to Mac OSX + Nexus 7 tablets) 
 ----------------------------------------------------
-* Start tablet in bootloader mode (press power and volume-down)
-* In Terminal type in `bash 0_unlock.sh` and press Enter
+1. Start tablet in bootloader mode (press power and volume-down)
+* Drag `0_unlock.sh` into Terminal and press Enter
 * On tablet, confirm 'Yes - Unlock bootloader...' by pressing the power key. 
 * (After tablet has started up) use Android File Transfer app to copy the 'backup' folder to the tablet (drag and drop the folder to the root of the device)
 * (After copying is done) Turn off device and restart into bootloader mode (see step 1)
-* In Terminal run `bash 1_recovery-mac.sh` in Terminal
-* (Once tablet restarted) run `bash 2_open_recovery.sh` in Terminal
+* Drag `1_recovery-mac.sh` into Terminal, press Enter
+* (Once tablet restarted) run `bash 2_open_recovery.sh`
 * (Once Recover has opened) Run `bash 3_restore.sh`
 * Tablet will restore image; USB can be unplugged during that process. Once restore process is completed (about 2 minutes), press Reboot > System. 
 * Set time and date in Android Settings	
