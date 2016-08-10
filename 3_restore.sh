@@ -1,0 +1,1 @@
+adb shell twrp restore /sdcard/backup
