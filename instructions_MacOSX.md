@@ -1,11 +1,19 @@
 Instructions for installing Android image on Mac OSX
 ====================================================
 
-Updated 8/10/2016
+Updated 5/20/2017
 
 A script to simplify the setup of multiple brand new Android devices based on a single configuration. At its core it relies on a full system backup created in advance by an experienced user through TWRP (Team Win Recovery Project). 
 
 Instructions regarding buttons to be pressed are specific to Nexus 7 devices, but the script should be universal for all Android devices.
+
+Setting up ADB and Fastboot
+---------------------------
+1. [Download](https://developer.android.com/studio/releases/platform-tools.html) the SDK Platform Tools for Mac. 
+1. Unzip the downloaded folder. 
+1. Move the two files 'adb' and 'fastboot' into a folder called 'tools' inside the home directory. (To open the home directory in Finder go to Go > Home.)
+1. Open a Terminal window and paste the following command, then press Enter: `echo 'export PATH=$PATH:~/tools' >> ~/.bash_profile`
+1. Close the terminal (Cmd+Q) and open it up again. Type in `adb`. If you get a long list of adb commands it is working! 
 
 Instructions (Specific to Mac OSX + Nexus 7 tablets) 
 ----------------------------------------------------
